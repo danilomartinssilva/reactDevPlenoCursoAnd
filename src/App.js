@@ -3,10 +3,8 @@ import 'bootstrap-css-only';
 import NewComment from './NewComment';
 import Comments from './Comments';
 import db from './firebase';
-
-
-
-
+import base from './base';
+import firebase from './firebase';
 
 
 class App extends Component {
@@ -14,24 +12,26 @@ class App extends Component {
 
     super(props);  
     this.postNewComment = this.postNewComment.bind(this);
-
-    this.state = {
-      comments:{
-       
-      }
+    this.state={
+      comments:[]
     }
     
+    
+    
+  }
+  componentDidMount(){
+    db.on('value',snapshot=>{
+      this.setState({
+        comments:snapshot.val()
+      })
+    })
+  }
+  renderComents(){
+   
   }
   postNewComment(comment){
-    const comments = {
-      ...this.state.comments,comment
-    };
-    const timestamp = Date.now();
-    comments[`comm-${timestamp}`] = comment;
-    this.setState({
-      comments:comments
-    });
-    db.database().ref('comments').push(comment);
+    db.push(comment);
+
   }
   render() {
     return (

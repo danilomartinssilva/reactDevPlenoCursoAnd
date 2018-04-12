@@ -2,10 +2,13 @@ import React, {Component } from 'react';
 
 
 //stateless
+
 const Comment = props=>
     
         <div className="card">
+        
             <p className="card-body">{props.comment.comment} -
+
              {props.date} 
             </p>
         </div>
@@ -15,7 +18,13 @@ const Comment = props=>
 
 /*
 class Comment extends Component{
+    constructor(props){
+        super(props);
+    }
+
     render(){
+        
+        
         return (
             <div className="card">
                 <p className="card-body">{this.props.comment.comment} -

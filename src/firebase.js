@@ -8,6 +8,6 @@ const  firebaseApp = firebase.initializeApp( {
     messagingSenderId: "320633261422"
   });
   
-  const db = firebase.database(firebaseApp);
-  export default firebase;
+  const db = firebase.database(firebaseApp).ref("comments");
+  export default db;
   
